@@ -1,0 +1,40 @@
+1. Install apache:
+sudo apt-get install apache2 -y
+
+2.Start the Apache service and make it start on system boot:
+sudo systemctl start apache2.service
+sudo systemctl enable apache2.service
+
+3. Install php
+sudo apt-get install -y php7.0 libapache2-mod-php7.0 php7.0-cli php7.0-common php7.0-mbstring php7.0-gd php7.0-intl php7.0-xml php7.0-mysql php7.0-mcrypt php7.0-zip
+
+4. Log in with root and create your user and database in MariaDB
+CREATE USER '<username>'@'localhost' IDENTIFIED BY '<password>';
+CREATE DATABASE bill_info;
+GRANT ALL PRIVILEGES ON bill_info.* TO '<username>'@'localhost';
+
+5. Log out root then log in with new user
+mysql -u <username> -p -h localhost
+
+6. Create users table in bill_info
+CREATE TABLE users (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+7.Download files from github
+
+8.Create files in /var/www/html using gedit, then copy content of downloaded files(since di namomove yung files directly sa directory)
+
+sudo gedit /var/www/html/config.php
+sudo gedit /var/www/html/login.php
+sudo gedit /var/www/html/register.php
+etc...
+
+9. edit config.php, change username and password
+
+10. enter localhost in browser
+
+
